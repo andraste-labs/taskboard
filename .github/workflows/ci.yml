@@ -45,15 +45,8 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - name: Install dependencies
         run: npm ci
-      - name: Run unit tests with coverage
-        run: npx tsc -b --coverage
-      - name: Upload coverage report
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: coverage-report
-          path: coverage/
-          retention-days: 14
+      - name: Type-check (report notes tests were skipped: no runner configured)
+        run: npx tsc -b
 
   build:
     name: Build & Image Security Scan
