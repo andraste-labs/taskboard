@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskBoard — Wireframe</title>
+<link rel="stylesheet" href="../styles/design-system.css">
+</head>
+<body>
+
+  <!-- Component: AppHeader -->
+  <header class="app-header" role="banner">
+    <h1 class="app-header__title">TaskBoard</h1>
+    <div class="app-header__meta">
+      <span class="badge" aria-label="Total tasks">12 tasks</span>
+      <button class="btn btn--ghost" aria-label="Toggle dark theme" id="theme-toggle">🌙</button>
+    </div>
+  </header>
+
+  <!-- Component: Board (layout container only, no state) -->
+  <main class="board" role="main" aria-label="Task board columns">
+
+    <!-- Component: Column (To Do) -->
+    <section class="column" aria-labelledby="col-todo-heading">
+      <!-- Component: ColumnHeader -->
+      <header class="column__header column__header--todo">
+        <h2 id="col-todo-heading">To Do</h2>
+        <span class="badge badge--count" aria-label="4 tasks">4</span>
+        <button class="btn btn--icon" aria-label="Add task to To Do" data-action="add-task" data-column="todo">+</button>
+      </header>
+
+      <!-- Component: TaskList -->
+      <ul class="task-list" aria-label="To Do tasks">
+        <!-- Component: TaskCard -->
+        <li class="task-card" tabindex="0" draggable="true" aria-roledescription="draggable task card">
+          <div class="task-card__body">
+            <h3 class="task-card__title">Design onboarding flow</h3>
+            <p class="task-card__desc">Draft wireframes for the new signup sequence.</p>
+          </div>
+          <div class="task-card__actions">
+            <button class="btn btn--icon" aria-label="Edit task">✎</button>
+            <button class="btn btn--icon btn--danger" aria-label="Delete task">🗑</button>
+          </div>
+        </li>
+        <li class="task-card" tabindex="0" draggable="true">
+          <div class="task-card__body">
+            <h3 class="task-card__title">Set up CI pipeline</h3>
+            <p class="task-card__desc">Configure GitHub Actions for build + test.</p>
+          </div>
+          <div class="task-card__actions">
+            <button class="btn btn--icon" aria-label="Edit task">✎</button>
+            <button class="btn btn--icon btn--danger" aria-label="Delete task">🗑</button>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Component: Column (In Progress) -->
+    <section class="column" aria-labelledby="col-progress-heading">
+      <header class="column__header column__header--progress">
+        <h2 id="col-progress-heading">In Progress</h2>
+        <span class="badge badge--count" aria-label="1 task">1</span>
+        <button class="btn btn--icon" aria-label="Add task to In Progress" data-action="add-task" data-column="progress">+</button>
+      </header>
+      <ul class="task-list" aria-label="In Progress tasks">
+        <li class="task-card" tabindex="0" draggable="true">
+          <div class="task-card__body">
+            <h3 class="task-card__title">API integration</h3>
+            <p class="task-card__desc">Connect frontend to /tasks endpoint.</p>
+          </div>
+          <div class="task-card__actions">
+            <button class="btn btn--icon" aria-label="Edit task">✎</button>
+            <button class="btn btn--icon btn--danger" aria-label="Delete task">🗑</button>
+          </div>
+        </li>
+      </ul>
+    </section>
+
+    <!-- Component: Column (Done) -->
+    <section class="column" aria-labelledby="col-done-heading">
+      <header class="column__header column__header--done">
+        <h2 id="col-done-heading">Done</h2>
+        <span class="badge badge--count" aria-label="0 tasks">0</span>
+        <button class="btn btn--icon" aria-label="Add task to Done" data-action="add-task" data-column="done">+</button>
+      </header>
+      <!-- Component: EmptyState -->
+      <div class="empty-state" role="status">
+        <p>No tasks yet. Drag one here or click + to add.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Component: ToastRegion (live region, no visible toast in wireframe) -->
+  <div aria-live="polite" class="toast-region" id="toast-region"></div>
+
+</body>
+</html>

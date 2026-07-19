@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TaskBoard — Confirm Delete Modal</title>
+<link rel="stylesheet" href="../styles/design-system.css">
+</head>
+<body>
+
+  <!-- Component: ModalOverlay -->
+  <div class="modal-overlay">
+    <!-- Component: ConfirmDeleteModal -->
+    <div class="modal modal--small" role="alertdialog" aria-modal="true"
+         aria-labelledby="confirm-title" aria-describedby="confirm-desc">
+      <header class="modal__header">
+        <h2 id="confirm-title">Delete Task?</h2>
+      </header>
+      <div class="modal__body">
+        <p id="confirm-desc">This action cannot be undone.</p>
+      </div>
+      <footer class="modal__footer">
+        <button class="btn btn--secondary" data-action="cancel-delete">Cancel</button>
+        <button class="btn btn--danger" data-action="confirm-delete" autofocus>Delete</button>
+      </footer>
+    </div>
+  </div>
+
+</body>
+</html>

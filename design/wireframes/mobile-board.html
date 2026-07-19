@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaskBoard — Mobile Wireframe</title>
+<link rel="stylesheet" href="../styles/design-system.css">
+</head>
+<body class="is-mobile">
+
+  <header class="app-header">
+    <h1 class="app-header__title">TaskBoard</h1>
+    <button class="btn btn--ghost" aria-label="Toggle theme">🌙</button>
+  </header>
+
+  <!-- Component: MobileTabs (column switcher replacing 3-col grid) -->
+  <nav class="mobile-tabs" role="tablist" aria-label="Board columns">
+    <button role="tab" aria-selected="true" class="mobile-tabs__tab is-active">To Do (4)</button>
+    <button role="tab" aria-selected="false" class="mobile-tabs__tab">In Progress (1)</button>
+    <button role="tab" aria-selected="false" class="mobile-tabs__tab">Done (0)</button>
+  </nav>
+
+  <main class="board board--mobile" role="main">
+    <section class="column" role="tabpanel" aria-label="To Do column">
+      <header class="column__header column__header--todo">
+        <h2>To Do</h2>
+        <button class="btn btn--icon" aria-label="Add task">+</button>
+      </header>
+      <ul class="task-list">
+        <li class="task-card" tabindex="0">
+          <div class="task-card__body">
+            <h3 class="task-card__title">Design onboarding flow</h3>
+            <p class="task-card__desc">Draft wireframes for new signup.</p>
+          </div>
+          <div class="task-card__actions">
+            <button class="btn btn--icon" aria-label="Edit task">✎</button>
+            <button class="btn btn--icon btn--danger" aria-label="Delete task">🗑</button>
+          </div>
+        </li>
+      </ul>
+    </section>
+  </main>
+
+</body>
+</html>

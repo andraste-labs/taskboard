@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>TaskBoard — Add/Edit Task Modal</title>
+<link rel="stylesheet" href="../styles/design-system.css">
+</head>
+<body>
+
+  <!-- Component: ModalOverlay -->
+  <div class="modal-overlay">
+    <!-- Component: TaskFormModal -->
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <header class="modal__header">
+        <h2 id="modal-title">Add Task</h2>
+        <button class="btn btn--icon" aria-label="Close dialog" data-action="close-modal">✕</button>
+      </header>
+
+      <!-- Component: TaskForm -->
+      <form class="modal__body" novalidate>
+        <div class="form-field">
+          <label for="task-title">Title <span aria-hidden="true">*</span></label>
+          <input id="task-title" name="title" type="text" required
+                 aria-required="true" placeholder="e.g. Write project README">
+        </div>
+
+        <div class="form-field">
+          <label for="task-desc">Description</label>
+          <textarea id="task-desc" name="description" rows="3"
+                    placeholder="Optional details..."></textarea>
+        </div>
+
+        <div class="form-field">
+          <label for="task-column">Column</label>
+          <select id="task-column" name="column">
+            <option value="todo">To Do</option>
+            <option value="progress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+
+        <footer class="modal__footer">
+          <button type="button" class="btn btn--secondary" data-action="close-modal">Cancel</button>
+          <button type="submit" class="btn btn--primary">Add Task</button>
+        </footer>
+      </form>
+    </div>
+  </div>
+
+</body>
+</html>

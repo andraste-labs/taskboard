@@ -1,0 +1,276 @@
+{
+  "project": {
+    "name": "TaskBoard",
+    "description": "A Kanban-style task board application with three columns (To Do, In Progress, Done) allowing users to add, edit, and delete tasks, move tasks between columns, and persist data via a backend API.",
+    "type": "Full-Stack Web Application",
+    "complexity": "Medium",
+    "version": "1.0.0",
+    "techStack": {
+      "frontend": {
+        "framework": "React",
+        "language": "TypeScript",
+        "buildTool": "Vite",
+        "styling": "CSS Modules / TailwindCSS",
+        "stateManagement": "React Context API / Zustand",
+        "httpClient": "Axios",
+        "testing": "Vitest + React Testing Library"
+      },
+      "backend": {
+        "framework": "FastAPI",
+        "language": "Python 3.11+",
+        "orm": "SQLAlchemy",
+        "migrations": "Alembic",
+        "validation": "Pydantic",
+        "testing": "Pytest"
+      },
+      "database": {
+        "type": "PostgreSQL",
+        "version": "15+",
+        "hosting": "Docker container / Managed Postgres (e.g., RDS, Supabase)"
+      },
+      "devOps": {
+        "containerization": "Docker + Docker Compose",
+        "ciCd": "GitHub Actions",
+        "hosting": {
+          "frontend": "Vercel / Netlify",
+          "backend": "Render / Railway / AWS ECS"
+        }
+      }
+    },
+    "structure": {
+      "root": {
+        "README.md": "Project overview and setup instructions",
+        "PROJECT_STRUCTURE.json": "This file",
+        ".gitignore": "Git ignore rules",
+        "docker-compose.yml": "Multi-container orchestration for frontend, backend, and DB",
+        ".env.example": "Environment variable template",
+        "frontend/": {
+          "description": "React + TypeScript + Vite SPA",
+          "files": {
+            "package.json": "Frontend dependencies and scripts",
+            "tsconfig.json": "TypeScript configuration",
+            "vite.config.ts": "Vite build configuration",
+            "index.html": "Root HTML entry point",
+            ".env": "Frontend environment variables",
+            "public/": {
+              "favicon.ico": "App icon",
+              "assets/": "Static assets (images, icons)"
+            },
+            "src/": {
+              "main.tsx": "Application entry point",
+              "App.tsx": "Root App component",
+              "App.css": "Global app styles",
+              "index.css": "Global base styles",
+              "vite-env.d.ts": "Vite type declarations",
+              "components/": {
+                "Board/": {
+                  "Board.tsx": "Main Kanban board container",
+                  "Board.module.css": "Board styles"
+                },
+                "Column/": {
+                  "Column.tsx": "Column component (To Do, In Progress, Done)",
+                  "Column.module.css": "Column styles"
+                },
+                "TaskCard/": {
+                  "TaskCard.tsx": "Individual task card component",
+                  "TaskCard.module.css": "Task card styles"
+                },
+                "TaskModal/": {
+                  "TaskModal.tsx": "Modal for adding/editing tasks",
+                  "TaskModal.module.css": "Modal styles"
+                },
+                "common/": {
+                  "Button.tsx": "Reusable button component",
+                  "Input.tsx": "Reusable input component",
+                  "Loader.tsx": "Loading spinner component"
+                }
+              },
+              "context/": {
+                "TaskContext.tsx": "Global state management for tasks"
+              },
+              "hooks/": {
+                "useTasks.ts": "Custom hook for task CRUD operations",
+                "useDragAndDrop.ts": "Custom hook for drag-and-drop logic"
+              },
+              "services/": {
+                "api.ts": "Axios instance and API base configuration",
+                "taskService.ts": "API calls for task CRUD operations"
+              },
+              "types/": {
+                "task.types.ts": "TypeScript interfaces for Task and Column"
+              },
+              "utils/": {
+                "constants.ts": "App-wide constants (column names, statuses)",
+                "helpers.ts": "Utility/helper functions"
+              },
+              "tests/": {
+                "Board.test.tsx": "Unit tests for Board component",
+                "TaskCard.test.tsx": "Unit tests for TaskCard component"
+              }
+            }
+          }
+        },
+        "backend/": {
+          "description": "FastAPI backend service with PostgreSQL",
+          "files": {
+            "requirements.txt": "Python dependencies",
+            "Dockerfile": "Backend container definition",
+            ".env": "Backend environment variables",
+            "alembic.ini": "Alembic migration configuration",
+            "app/": {
+              "main.py": "FastAPI application entry point",
+              "config.py": "App configuration and settings",
+              "database.py": "Database connection and session management",
+              "models/": {
+                "task.py": "SQLAlchemy Task model",
+                "__init__.py": "Models package init"
+              },
+              "schemas/": {
+                "task.py": "Pydantic schemas for Task (Create, Update, Response)",
+                "__init__.py": "Schemas package init"
+              },
+              "routers/": {
+                "tasks.py": "API routes for task CRUD operations",
+                "__init__.py": "Routers package init"
+              },
+              "services/": {
+                "task_service.py": "Business logic for task operations"
+              },
+              "core/": {
+                "security.py": "Auth/security utilities (future use)",
+                "exceptions.py": "Custom exception handlers"
+              },
+              "tests/": {
+                "test_tasks.py": "API tests for task endpoints",
+                "conftest.py": "Pytest fixtures and test DB setup"
+              }
+            },
+            "migrations/": {
+              "versions/": "Alembic migration version files",
+              "env.py": "Alembic environment configuration"
+            }
+          }
+        },
+        "docs/": {
+          "API.md": "API endpoint documentation",
+          "ARCHITECTURE.md": "System architecture overview",
+          "SETUP.md": "Local development setup guide"
+        },
+        ".github/": {
+          "workflows/": {
+            "ci.yml": "CI pipeline: lint, test, build for frontend and backend",
+            "cd.yml": "CD pipeline: deploy frontend and backend"
+          }
+        }
+      }
+    },
+    "features": [
+      {
+        "name": "Task Board View",
+        "description": "Displays three columns: To Do, In Progress, Done, each showing associated tasks",
+        "priority": "high"
+      },
+      {
+        "name": "Add Task",
+        "description": "Users can create a new task with title and description in a chosen column",
+        "priority": "high"
+      },
+      {
+        "name": "Edit Task",
+        "description": "Users can update task title, description, or status",
+        "priority": "high"
+      },
+      {
+        "name": "Delete Task",
+        "description": "Users can remove tasks from the board",
+        "priority": "high"
+      },
+      {
+        "name": "Drag and Drop",
+        "description": "Users can move tasks between columns via drag-and-drop",
+        "priority": "medium"
+      },
+      {
+        "name": "Persistent Storage",
+        "description": "Tasks are stored in PostgreSQL via FastAPI backend and persist across sessions",
+        "priority": "high"
+      },
+      {
+        "name": "Responsive UI",
+        "description": "Board layout adapts to different screen sizes",
+        "priority": "medium"
+      },
+      {
+        "name": "API Validation",
+        "description": "Backend validates task data using Pydantic schemas",
+        "priority": "medium"
+      }
+    ],
+    "apiEndpoints": [
+      { "method": "GET", "path": "/api/tasks", "description": "Retrieve all tasks" },
+      { "method": "POST", "path": "/api/tasks", "description": "Create a new task" },
+      { "method": "GET", "path": "/api/tasks/{id}", "description": "Retrieve a single task by ID" },
+      { "method": "PUT", "path": "/api/tasks/{id}", "description": "Update an existing task" },
+      { "method": "DELETE", "path": "/api/tasks/{id}", "description": "Delete a task" },
+      { "method": "PATCH", "path": "/api/tasks/{id}/status", "description": "Update task status/column" }
+    ],
+    "databaseSchema": {
+      "tables": [
+        {
+          "name": "tasks",
+          "columns": [
+            { "name": "id", "type": "UUID", "constraints": "Primary Key" },
+            { "name": "title", "type": "VARCHAR(255)", "constraints": "NOT NULL" },
+            { "name": "description", "type": "TEXT", "constraints": "Nullable" },
+            { "name": "status", "type": "ENUM('todo','in_progress','done')", "constraints": "NOT NULL, default 'todo'" },
+            { "name": "position", "type": "INTEGER", "constraints": "For ordering within column" },
+            { "name": "created_at", "type": "TIMESTAMP", "constraints": "Default now()" },
+            { "name": "updated_at", "type": "TIMESTAMP", "constraints": "Auto-updated" }
+          ]
+        }
+      ]
+    },
+    "deployment": {
+      "frontend": {
+        "provider": "Vercel",
+        "buildCommand": "npm run build",
+        "outputDirectory": "dist",
+        "environmentVariables": ["VITE_API_BASE_URL"]
+      },
+      "backend": {
+        "provider": "Render",
+        "buildCommand": "pip install -r requirements.txt",
+        "startCommand": "uvicorn app.main:app --host 0.0.0.0 --port 8000",
+        "environmentVariables": ["DATABASE_URL", "SECRET_KEY", "CORS_ORIGINS"]
+      },
+      "database": {
+        "provider": "Render PostgreSQL / Supabase",
+        "backupStrategy": "Daily automated backups"
+      },
+      "containerization": {
+        "dockerCompose": true,
+        "services": ["frontend", "backend", "postgres"]
+      },
+      "ciCd": {
+        "provider": "GitHub Actions",
+        "steps": [
+          "Install dependencies",
+          "Run linting",
+          "Run unit tests",
+          "Build frontend and backend",
+          "Deploy on merge to main"
+        ]
+      }
+    },
+    "environmentVariables": {
+      "frontend": {
+        "VITE_API_BASE_URL": "Base URL for backend API"
+      },
+      "backend": {
+        "DATABASE_URL": "PostgreSQL connection string",
+        "SECRET_KEY": "Secret key for security purposes",
+        "CORS_ORIGINS": "Allowed origins for CORS"
+      }
+    }
+  }
+}
